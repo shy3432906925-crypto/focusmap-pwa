@@ -1,0 +1,16 @@
+{
+  "name": "FocusMap 专注图谱",
+  "short_name": "FocusMap",
+  "description": "周任务、每日发散图谱、专注计时和 DeepSeek 智能复盘。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#070b22",
+  "theme_color": "#070b22",
+  "lang": "zh-CN",
+  "icons": [
+    {"src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
