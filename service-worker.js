@@ -1,4 +1,4 @@
-const CACHE_NAME = 'focusmap-pwa-v2-mobile';
+const CACHE_NAME = 'focusmap-pwa-v5-island-20260612';
 const CORE_ASSETS = [
   './',
   './index.html',
