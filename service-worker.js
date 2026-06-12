@@ -1,4 +1,4 @@
-const CACHE_NAME = 'focusmap-pwa-v5-island-20260612';
+const CACHE_NAME = 'focusmap-pwa-v6-jump-themes-20260612';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -20,17 +20,18 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
-  // DeepSeek/Vercel API 请求必须走网络，避免缓存旧结果。
   if (url.pathname.startsWith('/api/') || url.hostname.includes('focusmap-deepseek-api')) {
     event.respondWith(fetch(event.request));
     return;
   }
   if (event.request.method !== 'GET') return;
   event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
-      const copy = response.clone();
-      caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-      return response;
-    }).catch(() => caches.match('./index.html')))
+    fetch(event.request)
+      .then(response => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+        return response;
+      })
+      .catch(() => caches.match(event.request).then(cached => cached || caches.match('./index.html')))
   );
 });
